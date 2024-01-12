@@ -64,8 +64,56 @@ h4{
 .taskbox{
     margin-top: 4rem;
     width: 80%;
-    height: 6.188rem;
     border-radius: 24px;
-    background: #3A0CA3;    
+    background: #3A0CA3;
+    display: flex;
+    justify-content: center;
 }
 
+.taskcard{
+    width: 45%;
+    border: 1px solid green;
+    padding: 1rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.status-container{
+    width: 45%;
+    border: 1px solid yellow;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.status{
+    display: flex;
+    margin: 1rem;
+    gap: 1rem;
+}
+
+.status-title{
+    margin-top: 0.5rem;
+}
+.status div{
+    width: 3.813rem;
+    height: 3.124rem;
+    font-size: 0.7rem;
+    display: flex;
+    align-items: center;
+    text-align: center;
+}
+
+.not-started{
+    background: #FF595E;
+}
+
+.progress{
+    background: #FFCA3A;
+}
+
+.success{
+    background: #8AC926;
+}
