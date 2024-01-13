@@ -60,7 +60,6 @@ let saveaction = () => {
             in_progress.style.border = 'none'
     
         })
-    
         section.style.overflowY = 'scroll';
         inputbox.value = ''
     }
