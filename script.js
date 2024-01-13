@@ -1,14 +1,12 @@
 let inputbox = document.getElementById('textbox')
 let savebtn = document.getElementById('savebtn')
 let section = document.querySelector('section')
-let taskList = []
 
 let saveaction = () => {
     let newTask = inputbox.value
     let taskdesc = document.createElement('div')
     taskdesc.classList.add('taskdesc')
     let taskText = document.createElement('p')
-
     taskText.innerHTML = newTask
     taskdesc.appendChild(taskText)
     section.appendChild(taskdesc)
@@ -37,6 +35,18 @@ let saveaction = () => {
     statusBoxes.appendChild(not_started)
     statusBoxes.appendChild(in_progress)
     statusBoxes.appendChild(completed)
+
+    not_started.addEventListener('click',()=>{
+        taskdesc.style.background = '#FF595E'
+    })
+
+    in_progress.addEventListener('click',()=>{
+        taskdesc.style.background = '#FFCA3A'
+    })
+
+    completed.addEventListener('click',()=>{
+        taskdesc.style.background = '#8AC926'
+    })
 
     section.style.overflowY = 'scroll';
 

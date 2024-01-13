@@ -58,28 +58,6 @@ h4{
     color: white;
 }
 
-.taskbox{
-    margin-top: 4rem;
-    width: 80%;
-    border-radius: 24px;
-    background: #3A0CA3;
-    display: flex;
-    justify-content: center;
-}
-
-.taskcard{
-    width: 65%;
-    padding: 1rem;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-.task-container{
-    margin-top: 2rem;
-    width: 80%;
-}
-
 section{
     margin-top: 3rem;
     width: 80%;
