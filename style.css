@@ -75,24 +75,47 @@ h4{
     align-items: center;
 }
 
-.status-container{
-    width: 25%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
+.task-container{
+    margin-top: 2rem;
+    width: 80%;
 }
 
-.status{
+section{
+    margin-top: 3rem;
+    width: 80%;
+    height: 60dvh;
+}
+
+.taskdesc{
+    background: #3A0CA3;
+    width: 100%;
+    border-radius: 1.0rem;
+    display: flex;
+    align-items: center;
+    margin-bottom: 1rem;
+}
+
+.taskdesc p{
+    width: 70%;
+    padding-left: 2rem;
+}
+
+.statusContainer{
+    width: 25%;
+    height: 100%;
+}
+
+.statusTextContainer{
+    text-align: center;
+}
+
+.statusBoxes{
     display: flex;
     margin: 1rem;
     gap: 1rem;
 }
 
-.status-title{
-    margin-top: 0.5rem;
-}
-.status div{
+.statusBoxes div{
     width: 3.813rem;
     height: 3.124rem;
     font-size: 0.7rem;
@@ -100,16 +123,17 @@ h4{
     align-items: center;
     text-align: center;
     padding: 0.2rem;
+    cursor: pointer;
 }
 
-.not-started{
+.statusBoxes div:first-child{
     background: #FF595E;
 }
 
-.progress{
+.statusBoxes div:nth-child(2){
     background: #FFCA3A;
 }
 
-.success{
+.statusBoxes div:last-child{
     background: #8AC926;
 }
