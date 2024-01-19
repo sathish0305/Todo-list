@@ -4,116 +4,12 @@
     margin: 0;
     padding: 0;
     font-family: 'Luckiest Guy', cursive;
-}
-
-main{
-    height: 100dvh;
-    background: #6A4C93;
-    color: #ffff;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
-
-.title h1{
-    padding-top: 3rem;
-    letter-spacing: 0.2rem;
-    font-size: 2.5rem;
-}
-
-h4{
-    letter-spacing: 0.2rem;
-}
-
-.input-box{
-    margin-top: 4rem;
-    width: 80%;
-    display: flex;
-    justify-content: space-between;
-    flex-wrap: wrap;
-}
-
-.text-box{
-    width: 70%;
-    height: 3.063rem;
-}
-
-.text-inputbox{
-    width: 100%;
-    height: 3.063rem;
-    background: #1982C4;
-    color: white;
-    padding-left: 2rem;
-}
-
-.save-button{
-    width: 20%;
-    margin-left: 1rem;
-}
-
-.save-innerbtn{
-    width: 100%;
-    height: 100%;
-    background: #1D3557;
-    color: white;
-}
-
-section{
-    margin-top: 3rem;
-    width: 80%;
-    height: 60dvh;
-    overflow-y: auto;
-}
-
-.taskdesc{
-    background: #3A0CA3;
-    width: 100%;
-    border-radius: 1.0rem;
-    display: flex;
-    align-items: center;
-    margin-bottom: 1rem;
-}
-
-.taskdesc p{
-    width: 70%;
-    padding-left: 2rem;
-}
-
-.statusContainer{
-    width: 25%;
-    padding-right: 0.5rem;
-}
-
-.statusTextContainer{
-    text-align: center;
-}
-
-.statusBoxes{
-    display: flex;
-    flex-wrap: wrap;
-    margin: 1rem;
-    gap: 1rem;
-}
-
-.statusBoxes div{
-    width: 3rem;
-    height: 3rem;
-    font-size: 0.6rem;
-    display: flex;
-    align-items: center;
-    text-align: center;
-    padding: 0.5rem;
-    cursor: pointer;
-}
-
-.statusBoxes div:first-child{
-    background: #FF595E;
-}
-
-.statusBoxes div:nth-child(2){
-    background: #FFCA3A;
-}
-
-.statusBoxes div:last-child{
-    background: #8AC926;
+    --primary-color:#6A4C93;
+    --secondary-color:#1982C4;
+    --button-color: #1D3557;
+    --card-color: #3A0CA3;
+    --text-color:white;
+    --not-started:#FF595E;
+    --in-progress:#FFCA3A;
+    --completed:#8AC926;
 }
