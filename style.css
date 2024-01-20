@@ -18,7 +18,7 @@ body{
     background: var(--primary-color);
 }
 
-body,main,.title,.input,section{
+body,main,.title,.input{
     display: flex;
     align-items: center;
     justify-content: center;
@@ -53,18 +53,26 @@ main{
     width: 80%;
 }
 
-.save-btn{
+.save-btn, .clear-btn{
     width: 30%;
+    margin: 1rem;
     border: none;
     padding: 1rem;
     background-color: var(--button-color);
     color: white;
+    border-radius: 0.32rem;
+}
+
+.clear-btn{
+    background-color: var(--not-started);
 }
 
 section{
     height: 60%;
     width: 100%;
     border:1px solid palegreen;
+    display: flex;
+    justify-content: center;
 }
 
 @media only screen and (max-width: 600px) {
