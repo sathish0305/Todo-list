@@ -2,10 +2,10 @@ let inputbox = document.getElementById('textbox')
 let savebtn = document.getElementById('savebtn')
 let deletebtn = document.getElementById('deletebtn')
 let section = document.querySelector('section')
-let taskArray = localStorage.getItem('tasks') ?
-    JSON.parse(localStorage.getItem('tasks')) : [];
+let taskArray = localStorage.getItem('tasks') ? JSON.parse(localStorage.getItem('tasks')) : [];
 
 console.log(taskArray)
+
 let saveItem = (text) => {
     let card = document.createElement('div')
     card.classList.add('card')
@@ -30,6 +30,20 @@ let saveItem = (text) => {
     deleteTask.classList.add('deleteTask')
     boxes.appendChild(deleteTask)
 
+    complete.addEventListener('click',()=>{
+        console.log(JSON.parse(text).new_task)
+        card.style.background = '#8ac926'
+    })
+
+    deleteTask.addEventListener('click',()=>{
+        section.removeChild(card)
+        let res = taskArray.indexOf(text)
+        if (res > -1) {
+            taskArray.splice(res, 1);  // Remove the element
+        }
+        console.log(taskArray)
+        localStorage.setItem('tasks',JSON.stringify(taskArray))
+    })
 }
 
 taskArray.forEach(saveItem);
@@ -47,14 +61,12 @@ let addTask = () => {
         saveItem(JSON.stringify(task))
         inputbox.value = ''
     }
-
-
 }
 let deleteAllTasks = () => {
     localStorage.clear()
     taskArray.length = 0;
-    while (taskList.firstChild) {
-        taskList.removeChild(taskList.firstChild);
+    while (section.firstChild) {
+        section.removeChild(section.firstChild);
     }
 }
 savebtn.addEventListener('click', addTask)
