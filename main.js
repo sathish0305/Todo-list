@@ -2,33 +2,60 @@ let inputbox = document.getElementById('textbox')
 let savebtn = document.getElementById('savebtn')
 let deletebtn = document.getElementById('deletebtn')
 let section = document.querySelector('section')
-let taskList = document.getElementById('list')
-let taskArray = (localStorage.length === 0)? [].sort() : Object.keys(localStorage).sort()
+let taskArray = localStorage.getItem('tasks') ?
+    JSON.parse(localStorage.getItem('tasks')) : [];
 
-let deleteAllTasks = ()=>{
+console.log(taskArray)
+let saveItem = (text) => {
+    let card = document.createElement('div')
+    card.classList.add('card')
+
+    let taskText = document.createElement('div')
+    taskText.classList.add('taskText')
+    taskText.innerHTML = JSON.parse(text).new_task
+    card.appendChild(taskText)
+    section.append(card)
+
+
+    let boxes = document.createElement('div')
+    let complete = document.createElement('div')
+    let deleteTask = document.createElement('div')
+
+    boxes.classList.add('boxes')
+    card.appendChild(boxes)
+
+    complete.classList.add('complete')
+    boxes.appendChild(complete)
+
+    deleteTask.classList.add('deleteTask')
+    boxes.appendChild(deleteTask)
+
+}
+
+taskArray.forEach(saveItem);
+
+let addTask = () => {
+    if (inputbox.value === '') {
+        alert('textbox must not be empty')
+    } else {
+        let task = {
+            current_status: 'not started',
+            new_task: inputbox.value
+        }
+        taskArray.push(JSON.stringify(task))
+        localStorage.setItem('tasks', JSON.stringify(taskArray))
+        saveItem(JSON.stringify(task))
+        inputbox.value = ''
+    }
+
+
+}
+let deleteAllTasks = () => {
     localStorage.clear()
+    taskArray.length = 0;
+    while (taskList.firstChild) {
+        taskList.removeChild(taskList.firstChild);
+    }
 }
-
-let saveTask = (task)=>{
-    let li = document.createElement('li')
-    li.innerHTML = localStorage.getItem(task)
-    taskList.append(li)
-}
-
-if(localStorage.length>0){
-    taskArray.forEach((task)=>saveTask(task))
-}
-
-let taskid = localStorage.length
-let addTask = ()=>{
-    let new_task = inputbox.value
-    taskArray.push(`task${taskid}`)
-    localStorage.setItem(`task${taskid}`,new_task)
-    saveTask(`task${taskid}`)
-    taskid+=1
-    inputbox.value = ''
-    
-}
-
-savebtn.addEventListener('click',addTask)
-deletebtn.addEventListener('click',deleteAllTasks)
+savebtn.addEventListener('click', addTask)
+deletebtn.addEventListener('click', deleteAllTasks)
