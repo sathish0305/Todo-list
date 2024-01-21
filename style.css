@@ -30,7 +30,6 @@ body,
 main {
   height: 98%;
   width: 80%;
-  color: white;
   letter-spacing: 0.1rem;
   flex-direction: column;
   display: flex;
@@ -41,6 +40,7 @@ main {
   font-size: xx-large;
   height: 10%;
   width: 100%;
+  color: var(--text-color);
 }
 
 .input {
@@ -54,7 +54,7 @@ main {
   font-family: 'Kanit', sans-serif;
   padding: 1rem;
   background: var(--secondary-color);
-  color: white;
+  color: var(--text-color);
   width: 80%;
 }
 
@@ -65,7 +65,7 @@ main {
   border: none;
   padding: 1rem;
   background-color: var(--button-color);
-  color: white;
+  color: var(--text-color);
   border-radius: 0.32rem;
   cursor: pointer;
 }
@@ -169,8 +169,6 @@ background-image: url('/icons8-correct-50.png');
   }
 }
 
-@media only screen and (min-device-width: 480px) and (orientation: landscape) {
-}
 
 @media only screen and (max-width: 767px) and (orientation: landscape) {
   /* Your CSS code here */
