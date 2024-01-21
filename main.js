@@ -31,8 +31,24 @@ let saveItem = (text) => {
     boxes.appendChild(deleteTask)
 
     complete.addEventListener('click',()=>{
-        console.log(JSON.parse(text).new_task)
-        card.style.background = '#8ac926'
+        let taskobj = JSON.parse(text)
+        if (taskobj.current_status === 'not started'){
+            taskobj.current_status = 'complete'
+            let str_taskobj = JSON.stringify(taskobj)
+            taskArray[taskArray.indexOf(text)] = str_taskobj
+            localStorage.setItem('tasks',JSON.stringify(taskArray))
+            card.style.background = '#8ac926'
+            console.log(str_taskobj)
+        }else if(taskobj.current_status === 'complete'){
+            taskobj.current_status = 'not started'
+            let ns_str_taskobj = JSON.stringify(taskobj)
+            taskArray[taskArray.indexOf(text)] = ns_str_taskobj
+            localStorage.setItem('tasks',JSON.stringify(taskArray))
+            card.style.background = '#ff595e'
+            complete.style.backgroundImage = "url('/icons8-wrong-50.png')";
+        }
+        console.log(taskobj)
+        console.log(taskArray.indexOf(text))
     })
 
     deleteTask.addEventListener('click',()=>{
@@ -44,6 +60,17 @@ let saveItem = (text) => {
         console.log(taskArray)
         localStorage.setItem('tasks',JSON.stringify(taskArray))
     })
+
+    let task_object = JSON.parse(text)
+    console.log(task_object)
+    if(task_object.current_status === 'not started'){
+        card.style.background = '#ff595e'
+        complete.style.backgroundImage = "url('/icons8-correct-50.png')";
+    }else if(task_object.current_status === 'complete'){
+        card.style.background = '#8ac926'
+        complete.style.backgroundImage = "url('/icons8-wrong-50.png')";
+    }
+
 }
 
 taskArray.forEach(saveItem);

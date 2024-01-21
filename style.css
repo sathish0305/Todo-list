@@ -125,7 +125,7 @@ section {
 
 .complete{
     background: #8ac926;
-    background-image: url('/icons8-correct.svg');
+    background-image: url('/icons8-correct-50.png');
     background-size: contain;
     background-repeat: no-repeat;
 }
