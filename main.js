@@ -4,8 +4,6 @@ let deletebtn = document.getElementById('deletebtn')
 let section = document.querySelector('section')
 let taskArray = localStorage.getItem('tasks') ? JSON.parse(localStorage.getItem('tasks')) : [];
 
-console.log(taskArray)
-
 let saveItem = (text) => {
     let card = document.createElement('div')
     card.classList.add('card')
@@ -19,6 +17,7 @@ let saveItem = (text) => {
 
     let boxes = document.createElement('div')
     let complete = document.createElement('div')
+    let notStarted = document.createElement('div')
     let deleteTask = document.createElement('div')
 
     boxes.classList.add('boxes')
@@ -27,28 +26,28 @@ let saveItem = (text) => {
     complete.classList.add('complete')
     boxes.appendChild(complete)
 
+    notStarted.classList.add('notStarted')
+    boxes.appendChild(notStarted)
+
     deleteTask.classList.add('deleteTask')
     boxes.appendChild(deleteTask)
 
     complete.addEventListener('click',()=>{
         let taskobj = JSON.parse(text)
-        if (taskobj.current_status === 'not started'){
-            taskobj.current_status = 'complete'
-            let str_taskobj = JSON.stringify(taskobj)
-            taskArray[taskArray.indexOf(text)] = str_taskobj
-            localStorage.setItem('tasks',JSON.stringify(taskArray))
-            card.style.background = '#8ac926'
-            console.log(str_taskobj)
-        }else if(taskobj.current_status === 'complete'){
-            taskobj.current_status = 'not started'
-            let ns_str_taskobj = JSON.stringify(taskobj)
-            taskArray[taskArray.indexOf(text)] = ns_str_taskobj
-            localStorage.setItem('tasks',JSON.stringify(taskArray))
-            card.style.background = '#ff595e'
-            complete.style.backgroundImage = "url('/icons8-wrong-50.png')";
-        }
-        console.log(taskobj)
-        console.log(taskArray.indexOf(text))
+        taskobj.current_status = 'complete'
+        let str_taskobj = JSON.stringify(taskobj)
+        taskArray[taskArray.indexOf(text)] = str_taskobj
+        localStorage.setItem('tasks',JSON.stringify(taskArray))
+        card.style.background = '#8ac926'
+    })
+
+    notStarted.addEventListener('click',()=>{
+        let taskobj = JSON.parse(text)
+        taskobj.current_status = 'not started'
+        let ns_str_taskobj = JSON.stringify(taskobj)
+        taskArray[taskArray.indexOf(text)] = ns_str_taskobj
+        localStorage.setItem('tasks',JSON.stringify(taskArray))
+        card.style.background = '#ff595e'
     })
 
     deleteTask.addEventListener('click',()=>{
@@ -62,13 +61,10 @@ let saveItem = (text) => {
     })
 
     let task_object = JSON.parse(text)
-    console.log(task_object)
     if(task_object.current_status === 'not started'){
         card.style.background = '#ff595e'
-        complete.style.backgroundImage = "url('/icons8-correct-50.png')";
     }else if(task_object.current_status === 'complete'){
         card.style.background = '#8ac926'
-        complete.style.backgroundImage = "url('/icons8-wrong-50.png')";
     }
 
 }

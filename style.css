@@ -1,5 +1,5 @@
 @import url("https://fonts.googleapis.com/css2?family=Luckiest+Guy&display=swap");
-@import url("https://fonts.googleapis.com/css2?family=Nunito&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Kanit&display=swap');
 
 * {
   margin: 0;
@@ -51,6 +51,7 @@ main {
 
 .input .textbox {
   border: none;
+  font-family: 'Kanit', sans-serif;
   padding: 1rem;
   background: var(--secondary-color);
   color: white;
@@ -74,7 +75,6 @@ main {
 }
 
 section {
-  margin-top:4rem;
   width: 100%;
   display: flex;
   align-items: center;
@@ -103,31 +103,36 @@ section {
 }
 
 .taskText {
-  width: 80%;
+  width: 70%;
   padding: 1rem;
+  font-family: 'Kanit', sans-serif;
+  letter-spacing: normal;
 }
 
 .boxes {
   display: flex;
   align-items: center;
   justify-content: space-around;
-  width: 20%;
+  width: 30%;
 }
 
 .complete,
-.deleteTask {
+.deleteTask,
+.notStarted {
   height: 2rem;
   width: 2rem;
   border-radius: 0.2rem;
   cursor: pointer;
   margin: 0.4rem;
+  background-repeat: no-repeat;
+  background-size: contain;
 }
 
 .complete{
-    background: #8ac926;
-    background-image: url('/icons8-correct-50.png');
-    background-size: contain;
-    background-repeat: no-repeat;
+background-image: url('/icons8-correct-50.png');
+}
+.notStarted{
+  background-image: url('/icons8-wrong-50.png');
 }
 
 .deleteTask {
@@ -142,15 +147,34 @@ section {
     width: 90%;
     height: 98%;
   }
-
   .taskText {
-    width: 60%;
+    width: 95%;
     padding: 1rem;
   }
   .boxes {
     display: flex;
     align-items: center;
     justify-content: space-around;
-    width: 30%;
+    width: 100%;
+    background-color: var(--button-color);
+  }
+  .card {
+    width: 95%;
+    border-radius: 0.2rem;
+    display: flex;
+    align-items: center;
+    background: #ff595e;
+    margin-bottom: 1rem;
+    flex-direction: column;
+  }
+}
+
+@media only screen and (min-device-width: 480px) and (orientation: landscape) {
+}
+
+@media only screen and (max-width: 767px) and (orientation: landscape) {
+  /* Your CSS code here */
+  section{
+    margin-top: 4rem;
   }
 }
