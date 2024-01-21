@@ -20,7 +20,7 @@ body {
 
 body,
 .title,
-.input,main {
+.input {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -29,6 +29,8 @@ body,
 main {
   height: 98%;
   width: 80%;
+  display: flex;
+  align-items: center;
   flex-direction: column;
 }
 

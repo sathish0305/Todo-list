@@ -3,8 +3,22 @@ let savebtn = document.getElementById('savebtn')
 let deletebtn = document.getElementById('deletebtn')
 let section = document.querySelector('section')
 let taskArray = localStorage.getItem('tasks') ? JSON.parse(localStorage.getItem('tasks')) : [];
+let emptyDiv = document.createElement('div')
+
+let emptyTasks =()=>{
+    if(taskArray.length === 0){
+        emptyDiv.innerHTML = 'No Tasks, Add new Task!!!'
+        emptyDiv.style.fontSize = '2rem'
+        emptyDiv.style.marginTop = '2rem'
+        section.appendChild(emptyDiv)
+    }else{
+        emptyDiv.style.display = 'none'
+    }
+}
+
 
 let saveItem = (text) => {
+    emptyTasks()
     let card = document.createElement('div')
     card.classList.add('card')
 
@@ -13,25 +27,25 @@ let saveItem = (text) => {
     taskText.innerHTML = JSON.parse(text).new_task
     card.appendChild(taskText)
     section.append(card)
-
-
+    
+    
     let boxes = document.createElement('div')
     let complete = document.createElement('div')
     let notStarted = document.createElement('div')
     let deleteTask = document.createElement('div')
-
+    
     boxes.classList.add('boxes')
     card.appendChild(boxes)
-
+    
     complete.classList.add('complete')
     boxes.appendChild(complete)
-
+    
     notStarted.classList.add('notStarted')
     boxes.appendChild(notStarted)
-
+    
     deleteTask.classList.add('deleteTask')
     boxes.appendChild(deleteTask)
-
+    
     complete.addEventListener('click',()=>{
         let taskobj = JSON.parse(text)
         taskobj.current_status = 'complete'
@@ -59,14 +73,14 @@ let saveItem = (text) => {
         console.log(taskArray)
         localStorage.setItem('tasks',JSON.stringify(taskArray))
     })
-
+    
     let task_object = JSON.parse(text)
     if(task_object.current_status === 'not started'){
         card.style.background = '#ff595e'
     }else if(task_object.current_status === 'complete'){
         card.style.background = '#8ac926'
     }
-
+    
 }
 
 taskArray.forEach(saveItem);
@@ -94,7 +108,9 @@ let deleteAllTasks = () => {
         while (section.firstChild) {
             section.removeChild(section.firstChild);
         }
+        location.reload()
     }
 }
 savebtn.addEventListener('click', addTask)
 deletebtn.addEventListener('click', deleteAllTasks)
+emptyTasks()
