@@ -73,7 +73,7 @@ taskArray.forEach(saveItem);
 
 let addTask = () => {
     if (inputbox.value === '') {
-        alert('textbox must not be empty')
+        alert('TaskBox should not be Empty!!')
     } else {
         let task = {
             current_status: 'not started',
@@ -86,10 +86,14 @@ let addTask = () => {
     }
 }
 let deleteAllTasks = () => {
-    localStorage.clear()
-    taskArray.length = 0;
-    while (section.firstChild) {
-        section.removeChild(section.firstChild);
+    if(taskArray.length === 0){
+        alert('No Tasks to Delete')
+    }else{
+        localStorage.clear()
+        taskArray.length = 0;
+        while (section.firstChild) {
+            section.removeChild(section.firstChild);
+        }
     }
 }
 savebtn.addEventListener('click', addTask)
