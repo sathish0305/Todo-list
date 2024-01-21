@@ -10,6 +10,7 @@ let emptyTasks =()=>{
         emptyDiv.innerHTML = 'No Tasks, Add new Task!!!'
         emptyDiv.style.fontSize = '2rem'
         emptyDiv.style.marginTop = '2rem'
+        emptyDiv.style.textAlign = 'center'
         section.appendChild(emptyDiv)
     }else{
         emptyDiv.style.display = 'none'
@@ -70,8 +71,9 @@ let saveItem = (text) => {
         if (res > -1) {
             taskArray.splice(res, 1);  // Remove the element
         }
-        console.log(taskArray)
         localStorage.setItem('tasks',JSON.stringify(taskArray))
+        location.reload()
+        emptyTasks()
     })
     
     let task_object = JSON.parse(text)
